@@ -1,8 +1,8 @@
 # Your Name Here
 # UWYO COSC 1010
 # Submission Date
-# Lab XX
-# Lab Section: 
+# Lab 07
+# Lab Section: 11
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -18,10 +18,19 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
-
+while True:
+    upper_bound = input("Enter an integer for factorial calculation: ")
+    if upper_bound.isdigit():
+        upper_bound = int(upper_bound) # Makes sure it's an integer
+        for i in range(1, upper_bound + 1):
+            factorial *= i
+        break
+    else:
+        print("Not an integer")
 print(f"The result of the factorial based on the given bound is {factorial}")
 
 print("*"*75)
+
 # Create a while loop that prompts a user for input of an integer values
 # Sum all inputs. When the user enters 'exit' (regardless of casing) end the loop
 # Upon ending the loop print the sum
@@ -39,6 +48,14 @@ print("*"*75)
 
 num_sum = 0 
 
+while True:
+    user_input = input("Enter an integer to add, or 'exit' to quit: ")
+    if user_input.lower() == 'exit':
+        break
+    elif user_input.lstrip('-').isdigit():
+        num_sum += int(user_input)
+    else:
+        print("Enter a valid integer or 'exit'")
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +76,29 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while True:
+    equation = input("Enter an equation in operand operator operand form with no spaces, or 'exit'")
+    if equation.lower() == 'exit':
+        break
+    for operator in ['+', '-', '*', '/', '%']:
+        if operator in equation:
+            operand1, operand2 = equation.split(operator) #splits around operator
+            operator_found = True
+            break
+    if not operator_found or not operand1.isdigit() or not operand2.isdigit():
+        print("Re-enter equation as operand, operator operand with no spaces")
+        continue
+    
+    operand1, operand2 = int(operand1), int(operand2)
+    if operator == '+':
+        result = operand1 + operand2
+    elif operator == '-':
+        result = operand1 - operand2
+    elif operator == '*':
+        result = operand1 * operand2
+    elif operator == '/':
+        result = operand1 / operand2
+    elif operator == '%':
+        result = operand1 % operand2
+    print(result)
+
