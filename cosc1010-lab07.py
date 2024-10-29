@@ -77,7 +77,7 @@ print("*"*75)
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
 while True:
-    equation = input("Enter an equation in operand operator operand form with no spaces, or 'exit'")
+    equation = input("Enter an equation in operand operator operand form with no spaces, or 'exit': ")
     if equation.lower() == 'exit':
         break
     for operator in ['+', '-', '*', '/', '%']:
