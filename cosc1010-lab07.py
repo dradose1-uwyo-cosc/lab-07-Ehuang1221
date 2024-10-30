@@ -22,7 +22,7 @@ while True:
     upper_bound = input("Enter an integer for factorial calculation: ")
     if upper_bound.isdigit():
         upper_bound = int(upper_bound) # Makes sure it's an integer
-        for i in range(1, upper_bound + 1):
+        for i in range(1, upper_bound + 1): # Iterates from up to bound
             factorial *= i
         break
     else:
@@ -50,10 +50,10 @@ num_sum = 0
 
 while True:
     user_input = input("Enter an integer to add, or 'exit' to quit: ")
-    if user_input.lower() == 'exit':
-        break
-    elif user_input.lstrip('-').isdigit():
-        num_sum += int(user_input)
+    if user_input.lower() == 'exit': 
+        break  # breaks while loop if exit is inputted
+    elif user_input.lstrip('-').isdigit():   # left strips the negative sign to check if it's a digit should still work as negative
+        num_sum += int(user_input) # converts to integer and adds it to sum
     else:
         print("Enter a valid integer or 'exit'")
 print(f"Your final sum is {num_sum}")
@@ -77,19 +77,24 @@ print("*"*75)
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
 while True:
-    equation = input("Enter an equation in operand operator operand form with no spaces, or 'exit': ")
-    if equation.lower() == 'exit':
+    equation = input("Enter an equation in 'operand operator operand' form with spaces (or type 'exit'): ")
+    if equation.lower() == 'exit': 
         break
-    for operator in ['+', '-', '*', '/', '%']:
-        if operator in equation:
-            operand1, operand2 = equation.split(operator) #splits around operator
-            operator_found = True
-            break
-    if not operator_found or not operand1.isdigit() or not operand2.isdigit():
-        print("Re-enter equation as operand, operator operand with no spaces")
+
+    parts = equation.split()  # Split by spaces
+    if len(parts) != 3:  # Check that we have exactly 3 parts
+        print("Please enter in the form: operand operator operand")
         continue
-    
+
+    operand1, operator, operand2 = parts
+
+    if not operand1.isdigit() or not operand2.isdigit():  # Ensure operands are digits
+        print("Operands must be integers. Please try again.")
+        continue
+
     operand1, operand2 = int(operand1), int(operand2)
+
+    # Check and perform the operation
     if operator == '+':
         result = operand1 + operand2
     elif operator == '-':
@@ -100,5 +105,10 @@ while True:
         result = operand1 / operand2
     elif operator == '%':
         result = operand1 % operand2
+    else:
+        print("Invalid operator. Please use one of +, -, *, /, %.")
+        continue
+
     print(result)
+
 
