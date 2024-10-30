@@ -1,12 +1,10 @@
-# Your Name Here
+# Edmon Huang
 # UWYO COSC 1010
 # Submission Date
 # Lab 07
 # Lab Section: 11
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Stackoverflow and TAs helped
 
 
 # Prompt the user for an upper bound 
